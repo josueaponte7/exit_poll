@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<li><a href='/configuraciones/topologia/' >Topología</a></li>
+<a href="registrarmunicipio">Agregar un Municipio</a>
+<table border="1" align="center">
+    <thead>
+        <tr>
+            <th>Estado</th>
+            <th>Municipio</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+
+    <tbody>    
+        <tr>
+            {% for m in listar_municipio %}
+            <tr class="{% cycle 'impar' 'par' %}">
+                <td>
+                    {{m.estado}}
+                </td>
+                 <td>
+                    {{m.municipio}}
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "editar_municipio" m.id %}"><img src="{{ STATIC_URL }}img/edit.gif"/></a>
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "borrar_municipio" m.id %}"><img src="{{ STATIC_URL }}img/borrar.gif"/></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>
+                    No hay Municipios registrados aún.
+                </td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

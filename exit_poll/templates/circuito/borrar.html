@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Eliminar Circuito</title>
+</head>
+<li><a href='/configuraciones/circuitos' >Volver</a></li>
+<body>
+    <h1>Eliminar</h1>
+    <form method="post">{% csrf_token %}
+	¿Está seguro que quiere borrar este circuito "{{ borrar_circuito }}" ?
+	<input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
+{% endblock %}

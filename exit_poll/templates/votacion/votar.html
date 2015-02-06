@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+
+ <h1>Votación</h1>
+    <form method="post">
+	{% csrf_token %}
+	<!--{{form.as_p}}-->
+        {{form.grupo_etareo}}
+        {{form.candidatos}}
+	<input type="submit" value="Votar"/>
+    </form>
+    {% for m in listar_exitpoll %}
+        {{m.id}}
+    {% endfor%}
+
+</body>
+</html>

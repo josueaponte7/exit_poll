@@ -1,0 +1,28 @@
+
+<table border="1" align="center">
+    <thead>
+        <tr>
+            <th>Candidato</th>
+          
+        </tr>
+    </thead>
+    <tbody>    
+        <tr>
+            {% for m in listar_votacion %}
+            <tr class="{% cycle 'impar' 'par' %}">
+                <td>
+                    {{m.candidatos.candidatos.nombre}}"
+                </td>
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td>
+                    No hay Categorias registrados aún.
+                </td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{{listar_votacion }}

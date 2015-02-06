@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Registrar Eleccion</title>
+</head>
+
+<body>
+    <h1>Registrar Eleccion</h1>
+    <form method="post">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" value="Guardar"/>
+    </form>
+</body>
+</html>
+{% endblock %}

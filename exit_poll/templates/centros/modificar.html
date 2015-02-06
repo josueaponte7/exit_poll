@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Modificar Centros</title>
+</head>
+<li><a href='/configuraciones/centros/' >Volver</a></li>
+<body>
+    <h1>Modificar Centros</h1>
+    <form method="post">
+	{% csrf_token %}
+	<table style="text-align:center;">
+	    <tr>
+		<td colspan="2" style='background-color: #D9EDF7'>
+		    Registrar Centro Electoral
+		</td>
+	    </tr>
+	    <tr>
+		<td>Código</td>
+		<td><input type='text' required id="codigo" name="codigo" value="{{editar_centros.codigo}}"/></td>
+	    </tr>
+	    <tr>
+		<td>Nombre del Centro Electoral</td>
+		<td><input id="nombre" required maxlength="50" name="nombre" type="text" value="{{editar_centros.nombre}}" />
+		</td>
+	    </tr>
+	    <tr>
+		<td>Estado</td>
+		<td>
+		    <select id="id_cod_estado" name="estado" required=True >
+			<option value="">-----------------------------</option>
+			{% for e in list_e %}
+			    <option value='{{e.id}}'> {{ e.estado }} </option>
+			{% endfor %}
+		</select>
+		</td>
+	    </tr>
+	    <tr>
+		<td>Municipio</td>
+		<td>
+		    <select id="id_cod_municipio" name="municipio" required=True>
+			<option value="">-----------------------------</option>
+			{% for f in list_m %}
+			    <option value='{{f.id}}'> {{ f.municipio }} </option>
+			{% endfor %}
+		</select>
+		</td>
+		
+	    </tr>
+	    <tr>
+		<td>Parroquia</td>
+		<td>
+		    <select id="id_cod_parroquia" name="parroquia" required=True>
+			<option value="">-----------------------------</option>
+			{% for p in list_p %}
+			    <option value='{{f.id}}'> {{ p.parroquia }} </option>
+			{% endfor %}
+		</select>
+		</td>
+		
+	    </tr>
+	    <tr>
+		<td>Dirección</td>
+		<td><input id="direccion" required maxlength="150" name="direccion" value="{{editar_centros.direccion}}" type="text"/>
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <input id='edit_user_create' type="hidden" name='user_create' value="{{editar_centros.user_create.id }}">
+		    
+		</td>
+	    </tr>
+	    <tr>
+		<td>
+		    <input id='user_update' type="hidden" name='user_update' value='{{ user.id }}'>
+		    
+		</td>
+	    </tr>
+	    <tr>
+		<td><input type="submit" value="Registrar"/></td>
+	    </tr>
+	</table>
+    </form>
+</body>
+</html>
+{% endblock %}

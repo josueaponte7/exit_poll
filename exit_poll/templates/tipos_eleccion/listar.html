@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<li><a href='/configuraciones/tipo_eleccion' >Tipos de elección</a></li>
+<a href="registrartipos">Agregar un Tipo de Eleccion</a>
+<table border="1" align="center">
+    <thead>
+        <tr>
+            <th>Categoria</th>
+            <th>Tipo</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody>    
+        <tr>
+            {% for m in listar_tipos %}
+            <tr class="{% cycle 'impar' 'par' %}">
+                <td>
+                    {{m.categoria}}
+                </td>
+                <td>
+                    {{m.tipo}}
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "editar_tipos" m.id %}"><img src="{{ STATIC_URL }}img/edit.gif"/></a>
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "borrar_tipos" m.id %}"><img src="{{ STATIC_URL }}img/borrar.gif"/></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>
+                    No hay Categorias registrados aún.
+                </td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

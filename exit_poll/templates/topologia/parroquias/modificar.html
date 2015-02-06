@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Editar Parroquia</title>
+</head>
+<li><a href='/configuraciones/topologia/parroquias' >Volver</a></li>
+<body>
+    <h1>Editar Parroquia</h1>
+    <form method="post">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" value="Guardar"/>
+    </form>
+</body>
+</html>
+{% endblock %}

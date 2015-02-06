@@ -1,0 +1,73 @@
+{% extends "home/index.html" %} <!-- Heredando (Bloque) plantilla index -->
+	{% block page_title %}Sistema de logeo{% endblock %}
+	{% if form.non_field_errors %}
+	<div class="panel">
+	  {{ form.non_field_errors }}
+	</div>
+	{% endif %}
+
+	{% block content %}
+	<!-- ************************************************************* -->
+	<form action="." method="POST" enctype="multipart/form-data" class="form-horizontal" autocomplete="off">
+		
+		{% csrf_token %}
+		<div class="jumbotron" style="width:990px;margin-left:30px;">
+			{% if mensaje%}
+				<div class="alert alert-danger" style="width:300px;margin-left:10px;">
+  					{{mensaje}}
+  				</div>
+  			{% endif %}
+  		{% if user.is_authenticated %}
+		<div class="container">
+				<div style="margin-top:30px;margin-left:300px;">
+					<div class="form-group">
+						<div class="col-sm-6" style="margin-left:10px;">
+							<div class="alert alert-info" style="text-align:center;">
+								Estado civil
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						
+						<label class="col-sm-2 control-label" for="cod">Código</label>
+						<div class="col-sm-4">
+							<input type="text" required class="form-control" id="cod" name="cod" placeholder="Código">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="descripcion">Descripción</label>
+						<div class="col-sm-4">
+							<input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-group">
+							<div class="col-sm-5" style="margin-left:95px;margin-top:15px;">
+								<button class="btn btn-primary" id="enviar">Enviar</button>
+								<a href='{% url 'vista_add_register' %}'>
+								<button class="btn btn-primary" id="nuevo">Nuevo</button>
+								</a>
+								<input type="reset" class="btn btn-danger" id="enviar" value="Borrar">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		{% else %}
+			<div style="margin-top:30px;margin-left:400px;">
+				Debe iniciar sesión
+			</div>
+		{% endif %}
+		</div>
+	</form>
+	{% endblock %}
+	{% block extra_head %}
+	  <style>
+	  .listeningFile {
+	    position: absolute;
+	    left:-9999px;
+	  }
+	  </style>
+	{% endblock %}
+	<!-- ************************************************************* -->

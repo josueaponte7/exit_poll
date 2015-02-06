@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>{% block page_title %}Página principal{% endblock %}</title>
+	<script src="../static/jquery_1.10.2/jquery.min.js"></script>
+	<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../static/bootstrap/js/alphanumeric.js"></script>
+	<script src="../static/js/style.js"></script>
+	<script src="../static/datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="../static/datepicker/js/bootstrap-datepicker.es.js"></script>
+	<script src="../static/foundation/foundation.min.js"></script>
+	<script src="../static/modernizr/custom.modernizr.js"></script>
+	<link rel="stylesheet" href="../static/css/style.css" />
+	<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" />  
+  	<link rel="stylesheet" href="../static/datepicker/css/datepicker.css" />  
+  	<link rel="stylesheet" href="../static/foundation/foundation.min.css" />
+	{% block extra_head %}{% endblock extra_head%}
+	</head>
+	<body>
+	<nav class="top-bar">
+		<ul class="title-area">
+			<li class="name">
+				<h1>
+					<a href="{% url 'vista_canaima' %}" title="Home">
+						Sistema de Registro	    
+
+						{% if user.is_authenticated %}
+							 Usuario: {{ user }}
+						{% endif %}
+					</a>
+				</h1>
+			</li>
+			<li class="toggle-topbar">
+				<a href="#"></a>
+			</li>
+		</ul>
+		<section class="top-bar-section">
+			<ul class="right">
+			{% if user.is_authenticated %}
+			<li class="has-dropdown">
+				<a href="" title="Mantenimiento">
+					Mantenimiento
+				</a>
+			<ul class="dropdown">
+				<li>
+					<a href="{% url 'lista_e_civil' %}">
+						Estado Civil
+					</a>
+				</li>
+			</ul>
+			</li>
+			{% endif %}
+			<li class="has-dropdown">
+				{% if user.is_authenticated %}
+				<a href="{% url 'vista_logout' %}">Cerrar sesión</a>
+
+			</li>
+			<li class="has-dropdown">
+				{% else %}
+				<a href="{% url 'vista_login' %}">Iniciar sesión</a>
+				{% endif %}
+			</li>
+			</ul>
+		</section>
+	</nav>
+	{% if messages %}
+  <div class="row">
+    <div class="large-12 columns">
+    {% for message in messages %}
+      {% if message.tags %}
+      <div data-alert class="alert-box {{ message.tags }}">
+        {{ message }}
+        <a href="#" class="close">&times;</a>
+      </div>
+      {% else %}
+      <div data-alert class="alert-box">
+        {{ message }}
+        <a href="#" class="close">&times;</a>
+      </div>
+      {% endif %}
+
+    {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <!-- =======================Bloque de elemento para renderizar las Vistas==================================== -->
+	{% block content %}{% endblock content %}
+  <!-- =========================================================== -->
+	<script>
+	  $(document).foundation();
+	</script>
+	</body>
+<html>

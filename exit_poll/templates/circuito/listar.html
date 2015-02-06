@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block contenido %}
+    
+<a href="registrarcircuito">Agregar un Circuito</a>
+<table border="1" align="center">
+    <thead>
+        <tr>
+            <th>Estado</th>
+            <th>Circuito</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody>    
+        <tr>
+            {% for m in listar_circuito %}
+            <tr class="{% cycle 'impar' 'par' %}">
+                <td>
+                    {{m.estado}}
+                </td>
+                <td>
+                    {{m.n_circuito}}
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "editar_circuito" m.id %}"><img src="{{ STATIC_URL }}img/edit.gif"/></a>
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "borrar_circuito" m.id %}"><img src="{{ STATIC_URL }}img/borrar.gif"/></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>
+                    No hay Circuitos registrados aún.
+                </td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

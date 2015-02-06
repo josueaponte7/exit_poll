@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block contenido %}
+    
+<a href="registrareleccion">Agregar una Eleccion</a>
+<table border="1" align="center">
+    <thead>
+        <tr>
+            <th>Elección</th>
+            <th>Categoría</th>
+            <th>Tipo</th>
+            <th>Año</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody>    
+        <tr>
+            {% for m in listar_eleccion %}
+            <tr class="{% cycle 'impar' 'par' %}">
+                <td>
+                    {{m.nombre}}
+                </td>
+                <td>
+                    {{m.categoria_eleccion}}
+                </td>
+                <td>
+                    {{m.tipo_eleccion}}
+                </td>
+                <td>
+                    {{m.year_eleccion}}
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "editar_eleccion" m.id %}"><img src="{{ STATIC_URL }}img/edit.gif"/></a>
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "borrar_eleccion" m.id %}"><img src="{{ STATIC_URL }}img/borrar.gif"/></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>
+                    No hay Elecciones registradas aún.
+                </td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

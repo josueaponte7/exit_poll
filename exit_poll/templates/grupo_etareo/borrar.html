@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Eliminar Grupo Etareo</title>
+</head>
+<li><a href='/configuraciones/grupo_etareo' >Volver</a></li>
+<body>
+    <h1>Eliminar</h1>
+    <form method="post">{% csrf_token %}
+	¿Está seguro que quiere borrar este Grupo Etareo "{{ borrar_grupo_etareo }}" ?
+	<input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
+{% endblock %}

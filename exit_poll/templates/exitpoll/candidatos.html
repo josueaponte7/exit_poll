@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+<table border="1" align="center">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+    <tbody>    
+        <tr>
+            {% for m in listar_exitpoll %}
+            <tr class="{% cycle 'impar' 'par' %}">
+                <td>
+                    {{m.candidatos.nombre}} {{m.candidatos.apellido}}
+                </td>
+               <td>
+                    <a href="{% url "votar" m.id %}">
+                        <img src="{{MEDIA_URL}}{{m.candidatos.foto}}">
+                    </a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>
+                    No hay ExitPoll registrados aún.
+                </td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

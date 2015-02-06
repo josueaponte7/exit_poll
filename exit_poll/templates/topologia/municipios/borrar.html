@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Eliminar Municipio</title>
+</head>
+<li><a href='/configuraciones/topologia/municipios' >Volver</a></li>
+<body>
+    <h1>Eliminar</h1>
+    <form method="post">{% csrf_token %}
+	¿Está seguro que quiere borrar este Municipio "{{ borrar_municipio }}" ?
+	<input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
+{% endblock %}

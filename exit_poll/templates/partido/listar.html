@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block contenido %}
+    
+<a href="registrarpartido">Agregar un Partidos</a>
+<table border="1" align="center">
+    <thead>
+        <tr>
+            <th>Siglas</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody>    
+        <tr>
+            {% for m in listar_partido %}
+            <tr class="{% cycle 'impar' 'par' %}">
+                <td>
+                    {{m.siglas}}
+                </td>
+                <td>
+                    {{m.n_partidos}}
+                </td>
+                <td>
+                    {{m.correo}}
+                </td>
+                <td>
+                    {{m.telefono}}
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "editar_partido" m.id %}"><img src="{{ STATIC_URL }}img/edit.gif"/></a>
+                </td>
+                <td style='text-align: center'>
+                    <a href="{% url "borrar_partido" m.id %}"><img src="{{ STATIC_URL }}img/borrar.gif"/></a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td>
+                    No hay Partidos registrados aún.
+                </td>
+            </tr>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

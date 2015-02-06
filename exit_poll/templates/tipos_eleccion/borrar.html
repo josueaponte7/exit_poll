@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Eliminar Tipo de Elección</title>
+</head>
+<li><a href='/configuraciones/tipo_eleccion/tipos' >Volver</a></li>
+<body>
+    <h1>Eliminar</h1>
+    <form method="post">{% csrf_token %}
+	¿Está seguro que quiere borrar este Tipo de Elección "{{ borrar_tipos }}" ?
+	<input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
+{% endblock %}

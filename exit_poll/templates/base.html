@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="{{ STATIC_URL }}js/jquery-1.11.2.min.js"></script>
+        <!--<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>-->
+        <!--<meta charset='utf-8'>-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Exit Poll - {% block titulo %}{% endblock %}</title>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+            Usuario: {{ user }}
+        {% endif %}
+        <a href="{% url 'vista_logout' %}">Cerrar sesión</a>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href='/menu' >Inicio</a></li>
+                    <li><a href='/candidatos'>Candidatos</a></li>
+                    <li><a href='/partidos'>Partidos</a></li>
+                    <li><a href='/elecciones'>Elecciones</a></li>
+                    <li><a href='/exitpoll/'>Exit Poll</a></li>
+                    <li><a href='/configuraciones/'>Configuraciones</a></li>
+                </ul> 
+            </nav>
+        </header>
+        <section class='contenido'>
+            {% block contenido %}{% endblock %}
+        </section>
+        <footer>
+            <p>Aplicación para la realizaciones de Exit Poll, Secretaria de Tecnología Estado Aragua 2015</p>
+        </footer>
+    </body>
+
+</html>

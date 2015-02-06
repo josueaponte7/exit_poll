@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Eliminar Elección</title>
+</head>
+
+<body>
+    <h1>Eliminar</h1>
+    <form method="post">{% csrf_token %}
+	¿Está seguro que quiere borrar esta Elección "{{ borrar_eleccion }}" ?
+	<input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
+{% endblock %}

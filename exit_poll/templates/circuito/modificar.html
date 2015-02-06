@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Modificar Circuito</title>
+</head>
+<li><a href='/configuraciones/circuitos' >Volver</a></li>
+<body>
+    <h1>Modificar Circuito</h1>
+    <form method="post">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" value="Guardar Cambio"/>
+    </form>
+</body>
+</html>
+{% endblock %}

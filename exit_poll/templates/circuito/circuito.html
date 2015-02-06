@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block contenido %}
+<html>
+<head>
+    <title>Registrar Circuito</title>
+</head>
+<li><a href='/configuraciones/circuitos' >Volver</a></li>
+<body>
+    <h1>Registrar Circuito</h1>
+    <form method="post">
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" value="Guardar"/>
+    </form>
+</body>
+</html>
+{% endblock %}
